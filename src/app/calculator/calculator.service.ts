@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {CalculationModel} from "../calculation.model";
 import {Observable} from "rxjs";
 import {CalculationResultModel} from "../calculationresult.model";
+import {catchError} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'

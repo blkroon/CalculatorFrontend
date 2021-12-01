@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CalculatorComponent } from './calculator.component';
+import {CalculatorService} from "./calculator.service";
+import {CalculationResultModel} from "../calculationresult.model";
+import {Observable} from "rxjs";
 
 describe('CalculatorComponent', () => {
   let component: CalculatorComponent;
@@ -8,7 +11,16 @@ describe('CalculatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalculatorComponent ]
+      declarations: [ CalculatorComponent ],
+      providers: [{
+        provide: CalculatorService,
+        useValue: {
+          calculate: () => {
+          },
+          history: () => { return new Observable<Array<CalculationResultModel>>()
+          }
+        }
+      }]
     })
     .compileComponents();
   });

@@ -9,6 +9,7 @@ import {CalculationResultModel} from "../calculationresult.model";
   styleUrls: ['./calculator.component.css']
 })
 export class CalculatorComponent implements OnInit {
+  errorMessage: boolean = false;
   result: CalculationResultModel | null = null;
   history: Array<CalculationResultModel> | null = null;
 
@@ -27,11 +28,12 @@ export class CalculatorComponent implements OnInit {
   }
 
   calculate(action: any): void {
+    this.errorMessage = false;
     this.calculatorService.calculate(this.valuesForm.controls["value1"]["value"], this.valuesForm.controls["value2"]["value"], action)
       .subscribe(result => {
         this.result = result;
         this.history?.unshift(result);
-      });
+      }, (error => { this.errorMessage = true}));
   }
 
   operatorConverter(value: string): string {
@@ -41,7 +43,7 @@ export class CalculatorComponent implements OnInit {
       case "SUBTRACT":
         return "-";
       case "MULTIPLY":
-        return "*";
+        return "×";
       case "DIVIDE":
         return "/";
       default:
