@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CalculatorService} from "./calculator.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CalculationResultModel} from "../calculationresult.model";
@@ -22,16 +22,30 @@ export class CalculatorComponent implements OnInit {
 
   ngOnInit(): void {
     this.calculatorService.history().subscribe(history => {
-      console.log(history);
       this.history = history;
-    console.log(this.history)});
+    });
   }
 
   calculate(action: any): void {
     this.calculatorService.calculate(this.valuesForm.controls["value1"]["value"], this.valuesForm.controls["value2"]["value"], action)
       .subscribe(result => {
-      this.result = result;
-      this.history?.push(result);
-    });
+        this.result = result;
+        this.history?.unshift(result);
+      });
+  }
+
+  operatorConverter(value: string): string {
+    switch (value) {
+      case "ADD":
+        return "+";
+      case "SUBTRACT":
+        return "-";
+      case "MULTIPLY":
+        return "*";
+      case "DIVIDE":
+        return "/";
+      default:
+        return "";
+    }
   }
 }

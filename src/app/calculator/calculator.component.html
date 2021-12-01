@@ -29,7 +29,9 @@
   </div>
 </div>
 <div class="container-sm">
-  <div *ngFor="let hist of history" class="card m-5">
-    <label>{{hist.value1}} {{hist.action}} {{hist.value2}} = {{hist.result}}</label>
+  <div class="card m-5">
+  <div *ngFor="let hist of history">
+    <label>{{hist.value1}} {{operatorConverter(hist.action)}} {{hist.value2}} = {{hist.result}}</label>
   </div>
+</div>
 </div>
