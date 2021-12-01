@@ -4,7 +4,7 @@ Frontend for calculator case application.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`.
 
 ## Running unit tests
 
