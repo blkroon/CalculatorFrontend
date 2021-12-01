@@ -3,14 +3,14 @@ import {HttpClient} from "@angular/common/http";
 import {CalculationModel} from "../calculation.model";
 import {Observable} from "rxjs";
 import {CalculationResultModel} from "../calculationresult.model";
-import {catchError} from "rxjs/operators";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CalculatorService {
 
-  url: string = "http://localhost:8080/calculate";
+  readonly url: string = environment.url;
 
   constructor(private http: HttpClient) { }
 

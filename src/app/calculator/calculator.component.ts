@@ -11,7 +11,7 @@ import {CalculationResultModel} from "../calculationresult.model";
 export class CalculatorComponent implements OnInit {
   errorMessage: boolean = false;
   result: CalculationResultModel | null = null;
-  history: Array<CalculationResultModel> | null = null;
+  history: Array<CalculationResultModel> = [];
 
   valuesForm = new FormGroup({
     value1: new FormControl(null, [Validators.required]),

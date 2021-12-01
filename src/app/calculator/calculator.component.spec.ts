@@ -4,7 +4,6 @@ import { CalculatorComponent } from './calculator.component';
 import {CalculatorService} from "./calculator.service";
 import {CalculationResultModel} from "../calculationresult.model";
 import {Observable, of, throwError} from "rxjs";
-import {By} from "@angular/platform-browser";
 import {ReactiveFormsModule} from "@angular/forms";
 
 describe('CalculatorComponent', () => {
