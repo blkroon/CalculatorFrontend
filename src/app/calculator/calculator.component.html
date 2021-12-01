@@ -4,11 +4,11 @@
     <form [formGroup]="valuesForm" class="form-inline">
       <div class="form-group m-2">
         <label>First value:</label>
-        <input formControlName="value1" type="number" class="form-control">
+        <input id="value1" formControlName="value1" type="number" class="form-control">
       </div>
       <div class="form-group m-2">
         <label>Second value:</label>
-        <input formControlName="value2" type="number" class="form-control">
+        <input id="value2" formControlName="value2" type="number" class="form-control">
       </div>
       <div class="form-group mb-2">
         <button type="submit" [disabled]="valuesForm.invalid" (click)="calculate('ADD')" id="ADD"
@@ -25,8 +25,8 @@
         </button>
       </div>
     </form>
-    <label class="m-2" [ngSwitch]="result">{{result?.result}}</label>
-    <div *ngIf="errorMessage" class="alert alert-warning m-2" role="alert">
+    <label class="m-2" id="result" [ngSwitch]="result">{{result?.result}}</label>
+    <div *ngIf="errorMessage" id="errorAlert" class="alert alert-warning m-2" role="alert">
       Invalid calculation!
     </div>
   </div>

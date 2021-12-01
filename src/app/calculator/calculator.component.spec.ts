@@ -3,14 +3,18 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CalculatorComponent } from './calculator.component';
 import {CalculatorService} from "./calculator.service";
 import {CalculationResultModel} from "../calculationresult.model";
-import {Observable} from "rxjs";
+import {Observable, of, throwError} from "rxjs";
+import {By} from "@angular/platform-browser";
+import {ReactiveFormsModule} from "@angular/forms";
 
 describe('CalculatorComponent', () => {
   let component: CalculatorComponent;
   let fixture: ComponentFixture<CalculatorComponent>;
+  let CalculatorServiceMock: CalculatorService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule],
       declarations: [ CalculatorComponent ],
       providers: [{
         provide: CalculatorService,
@@ -27,6 +31,7 @@ describe('CalculatorComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CalculatorComponent);
+    CalculatorServiceMock = TestBed.get(CalculatorService);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -34,4 +39,25 @@ describe('CalculatorComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display result', () => {
+    spyOn(CalculatorServiceMock, 'calculate').and.returnValue(of(new CalculationResultModel(1, 2, 3, 1, "SUBTRACT")))
+    component.calculate("SUBTRACT");
+
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector("#result").textContent).toContain('2')
+  });
+
+  it('should display alert', () => {
+    spyOn(CalculatorServiceMock, 'calculate').and.callFake(() => {
+      return throwError(new Error('Error'));
+    });
+    component.calculate("DIVIDE")
+
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector("#errorAlert").textContent).toContain(' Invalid calculation!')
+  });
+
 });
