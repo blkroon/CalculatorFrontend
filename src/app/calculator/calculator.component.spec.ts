@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CalculatorComponent } from './calculator.component';
-import {CalculatorService} from "./calculator.service";
-import {CalculationResultModel} from "../calculationresult.model";
+import {CalculatorService} from "../service/calculator.service";
+import {CalculationResultModel} from "../model/calculationresult.model";
 import {Observable, of, throwError} from "rxjs";
 import {ReactiveFormsModule} from "@angular/forms";
 

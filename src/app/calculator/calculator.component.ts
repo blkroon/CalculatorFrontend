@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {CalculatorService} from "./calculator.service";
+import {CalculatorService} from "../service/calculator.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CalculationResultModel} from "../calculationresult.model";
+import {CalculationResultModel} from "../model/calculationresult.model";
 
 @Component({
   selector: 'app-calculator',
@@ -34,6 +34,7 @@ export class CalculatorComponent implements OnInit {
         this.result = result;
         this.history?.unshift(result);
       }, (error => { this.errorMessage = true}));
+    this.valuesForm.reset();
   }
 
   operatorConverter(value: string): string {

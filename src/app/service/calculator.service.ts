@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {CalculationModel} from "../calculation.model";
+import {CalculationModel} from "../model/calculation.model";
 import {Observable} from "rxjs";
-import {CalculationResultModel} from "../calculationresult.model";
+import {CalculationResultModel} from "../model/calculationresult.model";
 import {environment} from "../../environments/environment";
 
 @Injectable({

@@ -4,6 +4,6 @@ export class CalculationResultModel {
     public result: number,
     public value1: number,
     public value2: number,
-    public action: string) {
+    public operation: string) {
   }
 }

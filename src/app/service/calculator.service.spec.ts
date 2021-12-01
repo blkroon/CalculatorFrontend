@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { CalculatorService } from './calculator.service';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {HttpClient} from "@angular/common/http";
-import {CalculationModel} from "../calculation.model";
+import {CalculationModel} from "../model/calculation.model";
 import {environment} from "../../environments/environment";
 
 describe('CalculatorService', () => {
@@ -26,7 +26,7 @@ describe('CalculatorService', () => {
     spyOn(mockHttpClient, "post");
     const calculation: CalculationModel = new CalculationModel(5, 10, "ADD");
 
-    service.calculate(calculation.value1, calculation.value2, calculation.action)
+    service.calculate(calculation.value1, calculation.value2, calculation.operation)
 
     expect(mockHttpClient.post).toHaveBeenCalledOnceWith(environment.url, calculation)
   });
