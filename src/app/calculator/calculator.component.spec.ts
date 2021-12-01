@@ -60,4 +60,20 @@ describe('CalculatorComponent', () => {
     expect(compiled.querySelector("#errorAlert").textContent).toContain(' Invalid calculation!')
   });
 
+  it('should convert ADD to +', () => {
+    expect(component.operatorConverter('ADD')).toBe("+")
+  })
+
+  it('should convert SUBTRACT to -', () => {
+    expect(component.operatorConverter('SUBTRACT')).toBe("-")
+  })
+
+  it('should convert MULTIPLY to ×', () => {
+    expect(component.operatorConverter('MULTIPLY')).toBe("×")
+  })
+
+  it('should convert ADD to /', () => {
+    expect(component.operatorConverter('DIVIDE')).toBe("/")
+  })
+
 });
