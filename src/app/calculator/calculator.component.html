@@ -33,8 +33,9 @@
 </div>
 <div *ngIf="history.length != 0" class="container-sm">
   <div class="card m-5">
-  <div *ngFor="let hist of history" class="m-2">
-    <label id="historyItem">{{hist.value1}} {{operatorConverter(hist.operation)}} {{hist.value2}} = {{hist.result}}</label>
+    <div *ngFor="let hist of history" class="m-2">
+      <label id="historyItem">{{hist.value1}} {{operatorConverter(hist.operation)}} {{hist.value2}}
+        = {{hist.result}}</label>
+    </div>
   </div>
-</div>
 </div>

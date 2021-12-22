@@ -12,6 +12,7 @@ export class CalculatorComponent implements OnInit {
   errorMessage: boolean = false;
   result: CalculationResultModel | null = null;
   history: Array<CalculationResultModel> = [];
+  test: any;
 
   valuesForm = new FormGroup({
     value1: new FormControl(null, [Validators.required]),
@@ -25,6 +26,7 @@ export class CalculatorComponent implements OnInit {
     this.calculatorService.history().subscribe(history => {
       this.history = history;
     });
+
   }
 
   calculate(action: any): void {
@@ -35,6 +37,10 @@ export class CalculatorComponent implements OnInit {
         this.history?.unshift(result);
       }, (error => { this.errorMessage = true}));
     this.valuesForm.reset();
+  }
+
+  logout(): void {
+    this.calculatorService.logout();
   }
 
   operatorConverter(value: string): string {
